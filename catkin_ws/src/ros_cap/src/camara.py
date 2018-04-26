@@ -11,7 +11,7 @@ class Test1(object):
 		super(Test1, self).__init__()
 		self.args = args
 		self.publisher = rospy.Publisher( "/chat",Image, queue_size=10)
-		self.subscriber = rospy.Subscriber("/usb_cam/image_raw",Image,self.callback)
+		self.subscriber = rospy.Subscriber("/duckiebot/camera_node/image/raw",Image,self.callback)
 		self.bridge = CvBridge()		
 
 

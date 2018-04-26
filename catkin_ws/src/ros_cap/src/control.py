@@ -18,16 +18,17 @@ class Control(object):
 
 	#def callback(self,msg):
 	def callback(self,msg):
-		angular = msg.axes[2]*10
-		velocidad = msg.axes[4]*0.4
+		angular = msg.axes[0]*6
+		velocidad = msg.axes[1]*0.4
 		self.twist.v = velocidad
 		self.twist.omega = angular
-		if(msg.buttons[1] == 1):
+		if(msg.buttons[1] == 1): #B frena
 			self.twist.v = 0
 			self.twist.omega = 0
 			self.publisher.publish(self.twist)
-		if(msg.buttons[0] == 1): 
-			self.publisher.publish(self.twist)
+		else:
+			if(msg.buttons[0] == 1): 
+				self.publisher.publish(self.twist)
 		
 
 
