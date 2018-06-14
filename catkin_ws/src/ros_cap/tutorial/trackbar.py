@@ -1,11 +1,11 @@
 import numpy as np
 import cv2 as cv
 
-# Función de callback que no hace nada
+# Funcion de callback que no hace nada
 def nothing(x):
     pass
 
-# Crea una imagen vacía (negro)
+# Crea una imagen vacia (negro)
 img = np.zeros((300,512,3), np.uint8)
 
 # Crea ventana de nombre 'image'
@@ -26,7 +26,7 @@ while(True):
     if k == 27:
         break
 
-    # Lee la posición de cada trackbar
+    # Lee la posicion de cada trackbar
     r = cv.getTrackbarPos('R','image')
     g = cv.getTrackbarPos('G','image')
     b = cv.getTrackbarPos('B','image')

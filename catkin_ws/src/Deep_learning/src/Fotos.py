@@ -12,14 +12,17 @@ class Template(object):
 	def __init__(self, args):
 		super(Template, self).__init__()
 		self.args = args
-		self.subscriber = rospy.Subscriber("/duckiebot/camera_node/image_raw",Image,self.callback)
+		self.subscriber = rospy.Subscriber("/duckiebot/camera_node/image/rect",Image,self.callback)
 		self.bridge = CvBridge()
+		self.k = 0
 
 	def callback(self,msg):
+		print('callback')
 		image = self.bridge.imgmsg_to_cv2(msg,"bgr8")
 		filename = str(rospy.get_time()) + ".jpg"
-		cv.SaveImage("~/patos/"+filename, image)
-		rospy.sleep( 2 )
+		if(self.k % 30 == 0):			
+			cv2.imwrite("/home/duckiebot/patos/"+filename, image)
+		self.k += 1
 		
 	#def publicar(self):
 
